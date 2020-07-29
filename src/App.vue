@@ -2,7 +2,6 @@
   <div id="app">
     <div id="container" ref="container">
       <img @load="setDimensions" id="background" ref="image" alt="Kiltis" src="./assets/Nettisnapsi.png" usemap="#objectmap">
-      <!--<Object img="läppäri.png" p-left="485px" p-top="500px" width="550px" /> -->
       <map name="objectmap">
         <area v-for="a in scaledAreas" :key="a.name"
               :alt="a.name"
@@ -13,25 +12,42 @@
         />
       </map>
     </div>
+    <Modal v-if="showModal" @close="showModal = false">
+      <router-view slot="content"></router-view>
+    </Modal>
     <p>Last Clicked: {{lastClicked}}</p>
   </div>
 </template>
 
 <script>
 
+import Modal from './components/Modal';
+import haalarit from './assets/audio/haalarit.mp3';
+import kahvikone from './assets/audio/kahvikone.mp3';
+import kuppikilina from './assets/audio/kahvikuppienkilina.mp3'
+import kaato from './assets/audio/kahvinkaatokuppiin.mp3'
+import kellonkilina from './assets/audio/kellonkilina.mp3'
+import naputus from './assets/audio/nappiksennaputus.mp3'
+import suklaapatukanrapina from './assets/audio/suklaapatukanrapina.mp3'
+
 export default {
   name: 'App',
+  components: {
+    Modal
+  },
   data () {
     return {
       wHeight: 0,
       wWidth: 0,
       lastClicked: "None",
+      showModal: false,
+      audio: '',
       areas: [
         {
           name: "Läppäri",
           shape: "poly",
           coords: [1915,2021,2360,1948,2416,2213,2726,2280,2309,2365,1994,2326],
-          func: "test"
+          func: "playSound"
         },
         {
           name: "Koti",
@@ -61,19 +77,19 @@ export default {
           name: "Kahvikone",
           shape: "rect",
           coords: [2360,1363,2540,1543],
-          func: "test"
+          func: "playSound"
         },
         {
           name: "Kuppi1",
           shape: "rect",
           coords: [3684,2675,3464,2838],
-          func: "test"
+          func: "playSound"
         },
         {
           name: "Kuppi2",
           shape: "rect",
           coords: [2681,2652,2906,2815],
-          func: "test"
+          func: "playSound"
         },
         {
           name: "Ohjain",
@@ -85,13 +101,13 @@ export default {
           name: "Haalarit",
           shape: "rect",
           coords: [4039,1042,4337,1926],
-          func: "test"
+          func: "playSound"
         },
         {
           name: "Suklaapatukka",
           shape: "rect",
           coords: [2478,1582,2681,1644],
-          func: "test"
+          func: "playSound"
         },
         {
           name: "Boombox",
@@ -105,7 +121,6 @@ export default {
   created() {
     window.addEventListener("resize", this.setDimensions);
   },
-
   destroyed() {
     window.removeEventListener("resize", this.setDimensions);
   },
@@ -127,7 +142,7 @@ export default {
       });
       console.log(newList);
       return newList;
-    }
+    },
   },
   methods: {
     callMethod(method, event, name) {
@@ -135,14 +150,37 @@ export default {
       console.log("Called method: " + method + ", elements: " + name);
       //alert("Clicked " + name);
     },
-    test(name) {
-      console.log(name);
-      this.lastClicked = name
-    },
     setDimensions() {
       console.log("Window resize: height: " + this.$refs.image.clientHeight + ", width: " + this.$refs.image.clientWidth);
       this.wHeight = this.$refs.image.clientHeight;
       this.wWidth = this.$refs.image.clientWidth;
+    },
+    test(name) {
+      console.log(name);
+      this.lastClicked = name;
+      this.$router.push('test');
+      this.showModal = true
+    },
+    playSound(name) {
+      console.log(name);
+      const cup = [kuppikilina, kaato];
+      const overall = [haalarit, kellonkilina];
+      if (name === 'Haalarit') {
+        let audio = new Audio(overall[Math.floor(Math.random() * overall.length)]);
+        audio.play();
+      } else if (name === 'Kahvikone') {
+        let audio = new Audio(kahvikone);
+        audio.play();
+      } else if (name === 'Kuppi1' || name === 'Kuppi2') {
+        let audio = new Audio(cup[Math.floor(Math.random() * cup.length)]);
+        audio.play();
+      } else if (name === 'Suklaapatukka') {
+        let audio = new Audio(suklaapatukanrapina);
+        audio.play();
+      } else if (name === 'Läppäri') {
+        let audio = new Audio(naputus);
+        audio.play();
+      }
     }
   }
 }
@@ -171,5 +209,11 @@ area {
 #background {
   left: 0;
   top: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 </style>
