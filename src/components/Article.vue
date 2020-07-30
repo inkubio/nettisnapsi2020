@@ -69,7 +69,10 @@ name: "Article",
   background-color: rgba(0,0,0,0.1);
 }
 #title {
-  margin: 0.5em 0 1em 0;
+  margin: 0.5em auto 1em;
+  border-radius: 2em;
+  width: 20%;
+  background-color: rgba(255,255,255,0.5);
 }
 #main {
   height: 90%;

@@ -7,7 +7,7 @@
             :title="a.name"
             :shape="a.shape"
             :coords="a.coords.toString()"
-            @click.stop="callMethod(a.func)"
+            @click.stop="callMethod(a.func, a.name)"
       />
     </map>
     <transition name="fade">
@@ -171,8 +171,12 @@ export default {
     },
   },
   methods: {
-    callMethod(method) {
-      this[method]();
+    callMethod(method, name) {
+      if(name) {
+        this[method](name);
+      } else {
+        this[method]();
+      }
     },
     setDimensions() {
       this.wHeight = this.$refs.image.clientHeight;
@@ -195,23 +199,28 @@ export default {
     etaelaminen() {
       this.$router.push('etaelaminen');
     },
-    playSound() {
+    playSound(name) {
       const cup = [kuppikilina, kaato];
       const overall = [haalarit, kellonkilina];
       if (name === 'Haalarit') {
         let audio = new Audio(overall[Math.floor(Math.random() * overall.length)]);
+        audio.volume = 1;
         audio.play();
       } else if (name === 'Kahvikone') {
         let audio = new Audio(kahvikone);
+        audio.volume = 1;
         audio.play();
       } else if (name === 'Kuppi1' || name === 'Kuppi2') {
         let audio = new Audio(cup[Math.floor(Math.random() * cup.length)]);
+        audio.volume = 1;
         audio.play();
       } else if (name === 'Suklaapatukka') {
         let audio = new Audio(suklaapatukanrapina);
+        audio.volume = 1;
         audio.play();
       } else if (name === 'Läppäri') {
         let audio = new Audio(naputus);
+        audio.volume = 1;
         audio.play();
       }
     },
