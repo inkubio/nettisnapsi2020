@@ -25,6 +25,14 @@ import BackIcon from "@/components/icons/BackIcon";
 export default {
 name: "Article",
   components: {IconBase, BackIcon},
+  data() {
+    return {
+
+    }
+  },
+  mounted() {
+
+  },
   methods: {
     goBack() {
       this.$router.push('/');
@@ -35,15 +43,14 @@ name: "Article",
 
 <style scoped>
 #article {
-  background-color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 #header {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 25px auto 25px;
   width: 100%;
-  background: rgb(0, 166, 83);
+  background: rgba(0, 166, 83, 1);
   height: 4em;
   align-items: center;
   justify-content: space-between;
@@ -66,6 +73,5 @@ name: "Article",
 }
 #main {
   height: 90%;
-  margin-bottom: 10px;
 }
 </style>

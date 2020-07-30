@@ -1,5 +1,5 @@
 <template>
-  <Article>
+  <Article class="background">
     <template v-slot:header>
       <span> Pää<span style="text-decoration: line-through;">kirjoitus</span>video</span>
     </template>
@@ -42,5 +42,10 @@ export default {
 #content {
   width: 90%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.background {
+  background-image: url("../assets/Nettisnapsi.png");
+  object-fit: fill;
+  background-position: 68% 87%;
 }
 </style>

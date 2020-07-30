@@ -22,7 +22,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   width: 100vw;
   height: 100vh;
   background-image: url("https://www.inkubio.fi/wp-content/uploads/tiedostot/logot/inkulogo-eiteksti.svg");
