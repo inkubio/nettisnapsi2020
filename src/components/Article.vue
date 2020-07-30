@@ -6,9 +6,13 @@
           <back-icon />
         </icon-base>
       </div>
+      <h1>
+        NettiSʸnapsi
+      </h1>
     </header>
     <article>
-      <h2>{{title}}</h2>
+      <h2 id="title"><slot name="header"></slot></h2>
+      <slot name="content"></slot>
     </article>
   </div>
 </template>
@@ -21,9 +25,6 @@ import BackIcon from "@/components/icons/BackIcon";
 export default {
 name: "Article",
   components: {IconBase, BackIcon},
-  props: {
-    title: String,
-  },
   methods: {
     goBack() {
       this.$router.push('/');
@@ -33,13 +34,19 @@ name: "Article",
 </script>
 
 <style scoped>
+#article {
+  background-color: white;
+  height: 100vh;
+}
 #header {
-  font-family: monospace;
-  display: flex;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 25px auto 25px;
   width: 100%;
   background: rgb(0, 166, 83);
   height: 4em;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 #back {
@@ -53,5 +60,8 @@ name: "Article",
 #back-container:hover {
   border-radius: 3em;
   background-color: rgba(0,0,0,0.1);
+}
+#title {
+  margin: 0.5em 0 1em 0;
 }
 </style>

@@ -6,22 +6,22 @@ Vue.config.productionTip = false
 
 Vue.use(VueRouter);
 
-import Test from '@/components/Test';
 import Background from "@/components/Background";
 import Article from "@/components/Article";
+import Paakirjoitus from "@/components/Paakirjoitus";
 
 const routes = [
   {
-    path: '/paakirjoitus', component: Article, props: {title: "Pääkirjoitus"}
+    path: '/paakirjoitus', component: Paakirjoitus,
   },
   {
-    path: '/horoskooppi', component: Test
+    path: '/horoskooppi', component: Article
   },
   {
-    path: '/urheiluhaastis', component: Test
+    path: '/urheiluhaastis', component: Article
   },
   {
-    path: '/etaelaminen', component: Test
+    path: '/etaelaminen', component: Article
   },
   {
     path: '/', component: Background

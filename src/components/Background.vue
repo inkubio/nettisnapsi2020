@@ -157,7 +157,7 @@ export default {
     },
     etaelaminen(name) {
       console.log(name);
-      this.$router.push('eta-alaminen');
+      this.$router.push('etaelaminen');
     },
     playSound(name) {
       console.log(name);
