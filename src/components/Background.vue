@@ -40,25 +40,25 @@ export default {
           name: "Koti",
           shape: "poly",
           coords: [2749,1030,3143,1036,3149,1717,3042,1712,2873,1605,2777,1605,2777,1526,2737,1526],
-          func: "test"
+          func: "etaelaminen"
         },
         {
           name: "Cosmo",
           shape: "poly",
           coords: [2394,2579,2687,2613,2535,2804,2236,2765],
-          func: "test"
+          func: "horoskooppi"
         },
         {
           name: "Krokesetti",
           shape: "poly",
           coords: [4895,1914,4607,2844,4923,2922,5182,2821,4985,1920],
-          func: "test"
+          func: "urheiluhaastis"
         },
         {
           name: "Palapelin pala",
           shape: "poly",
           coords: [4241,2945,4100,3086,4331,3159,4472,3007],
-          func: "test"
+          func: "paakirjoitus"
         },
         {
           name: "Kahvikone",
@@ -107,7 +107,6 @@ export default {
   },
   created() {
     window.addEventListener("resize", this.setDimensions);
-    window.scrollTo(0,1);
   },
   destroyed() {
     window.removeEventListener("resize", this.setDimensions);
@@ -116,7 +115,7 @@ export default {
     scaledAreas: function () {
       const h = 3508;
       const w = 6376;
-      let newList = this.areas.map(i => {
+      return this.areas.map(i => {
         let newCoords = i.coords.map((c, i) => {
           return Math.floor(i % 2 === 0 ?c * this.wWidth/w :c * this.wHeight/h);
         });
@@ -128,7 +127,6 @@ export default {
           func: i.func
         }
       });
-      return newList;
     },
   },
   methods: {
@@ -143,9 +141,23 @@ export default {
     },
     test(name) {
       console.log(name);
-      this.lastClicked = name;
       this.$router.push('test');
-      this.showModal = true
+    },
+    paakirjoitus(name) {
+      console.log(name);
+      this.$router.push('paakirjoitus');
+    },
+    horoskooppi(name) {
+      console.log(name);
+      this.$router.push('horoskooppi');
+    },
+    urheiluhaastis(name) {
+      console.log(name);
+      this.$router.push('urheiluhaastis');
+    },
+    etaelaminen(name) {
+      console.log(name);
+      this.$router.push('eta-alaminen');
     },
     playSound(name) {
       console.log(name);
