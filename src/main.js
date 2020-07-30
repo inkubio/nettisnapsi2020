@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 import Background from "@/components/Background";
 import Article from "@/components/Article";
 import Paakirjoitus from "@/components/Paakirjoitus";
+import Urheiluhaastis from "@/components/Urheiluhaastis";
 
 const routes = [
   {
@@ -18,7 +19,7 @@ const routes = [
     path: '/horoskooppi', component: Article
   },
   {
-    path: '/urheiluhaastis', component: Article
+    path: '/murheiluruutu', component: Urheiluhaastis
   },
   {
     path: '/etaelaminen', component: Article

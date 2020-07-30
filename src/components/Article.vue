@@ -10,7 +10,7 @@
         NettiSʸnapsi
       </h1>
     </header>
-    <article>
+    <article id="main">
       <h2 id="title"><slot name="header"></slot></h2>
       <slot name="content"></slot>
     </article>
@@ -63,5 +63,9 @@ name: "Article",
 }
 #title {
   margin: 0.5em 0 1em 0;
+}
+#main {
+  height: 90%;
+  margin-bottom: 10px;
 }
 </style>

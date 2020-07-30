@@ -153,7 +153,7 @@ export default {
     },
     urheiluhaastis(name) {
       console.log(name);
-      this.$router.push('urheiluhaastis');
+      this.$router.push('murheiluruutu');
     },
     etaelaminen(name) {
       console.log(name);
