@@ -10,6 +10,22 @@
             @click="callMethod(a.func, $event, a.name)"
       />
     </map>
+    <Modal v-if="showModal" @close="showModal = false">
+      <template v-slot:header>
+        <h1>NettiSʸnapsi</h1>
+      </template>
+      <div>
+        <p>Olet saapunut NettiS'napsin etäkiltikselle, tervetuloa!</p>
+        <p>Tutkimalla kiltistä saatat löytää S'napsin toimittajien kiltikselle jättämää (tai unohtamaa) sisältöä. Ihan
+          tavallisen kiltiksen tapaan myös etäkiltis sisältää ääniä.
+          Jokainen siivoaa sitten oman kahvikuppinsa lähtiessään!
+        </p>
+        <p>
+          Kesäterkuin,
+          S'napsin toimitus
+        </p>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -22,11 +38,14 @@ import kaato from '../assets/audio/kahvinkaatokuppiin.mp3'
 import kellonkilina from '../assets/audio/kellonkilina.mp3'
 import naputus from '../assets/audio/nappiksennaputus.mp3'
 import suklaapatukanrapina from '../assets/audio/suklaapatukanrapina.mp3'
+import Modal from "@/components/Modal";
 
 export default {
   name: "Background",
+  components: {Modal},
   data () {
     return {
+      showModal: true,
       wHeight: 0,
       wWidth: 0,
       areas: [
@@ -209,5 +228,10 @@ area {
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+}
+p {
+  font-size: 1.2em;
+  margin: 20px auto 10px;
+  max-width: 70%;
 }
 </style>
