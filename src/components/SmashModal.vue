@@ -2,9 +2,9 @@
   <Modal @close="$emit('close')">
     <template v-slot:header>
       <div id="titles">
-        <a @click="currentLink=links[0]">SMASH</a>
-        <a @click="currentLink=links[1]">SMASH MORE</a>
-        <a @click="currentLink=links[2]">SMASH THE MOST</a>
+        <a @click="currentLink=links[0]">SMASH 1</a>
+        <a @click="currentLink=links[1]">SMASH 2</a>
+        <a @click="currentLink=links[2]">SMASH 3</a>
       </div>
     </template>
     <iframe
