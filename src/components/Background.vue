@@ -7,25 +7,44 @@
             :title="a.name"
             :shape="a.shape"
             :coords="a.coords.toString()"
-            @click="callMethod(a.func, $event, a.name)"
+            @click.stop="callMethod(a.func)"
       />
     </map>
-    <Modal v-if="showModal" @close="showModal = false">
-      <template v-slot:header>
-        <h1>NettiSʸnapsi</h1>
-      </template>
-      <div>
-        <p>Olet saapunut NettiS'napsin etäkiltikselle, tervetuloa!</p>
-        <p>Tutkimalla kiltistä saatat löytää S'napsin toimittajien kiltikselle jättämää (tai unohtamaa) sisältöä. Ihan
-          tavallisen kiltiksen tapaan myös etäkiltis sisältää ääniä.
-          Jokainen siivoaa sitten oman kahvikuppinsa lähtiessään!
-        </p>
-        <p>
-          Kesäterkuin,
-          S'napsin toimitus
-        </p>
-      </div>
-    </Modal>
+    <transition name="fade">
+      <Modal v-if="showModal" @close="showModal = false">
+        <template v-slot:header>
+          <h1>NettiSʸnapsi</h1>
+        </template>
+        <div>
+          <p>Olet saapunut NettiSʸnapsin etäkiltikselle, tervetuloa!</p>
+          <p>Tutkimalla kiltistä saatat löytää Sʸnapsin toimittajien kiltikselle jättämää (tai unohtamaa) sisältöä. Ihan
+            tavallisen kiltiksen tapaan myös etäkiltis sisältää ääniä.
+            Jokainen siivoaa sitten oman kahvikuppinsa lähtiessään!
+          </p>
+          <p>
+            Kesäterkuin,
+            Sʸnapsin toimitus
+          </p>
+        </div>
+      </Modal>
+    </transition>
+    <transition name="fade">
+      <SmashModal v-show="showSmash" @close="showSmash = false" v-click-outside="closeSmash"/>
+    </transition>
+    <transition name="fade">
+      <Modal v-show="showSpotify" @close="showSpotify = false" v-click-outside="closeSpotify">
+        <template v-slot:header>
+          <h2>Kiltiskone</h2>
+        </template>
+        <iframe
+            id="spotify"
+            src="https://open.spotify.com/embed/playlist/7CA06xogpwC7skfOuOxZyd?si=xjdhteScRtKfZIuizA05-g"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media">
+        </iframe>
+      </Modal>
+    </transition>
   </div>
 </template>
 
@@ -39,13 +58,16 @@ import kellonkilina from '../assets/audio/kellonkilina.mp3'
 import naputus from '../assets/audio/nappiksennaputus.mp3'
 import suklaapatukanrapina from '../assets/audio/suklaapatukanrapina.mp3'
 import Modal from "@/components/Modal";
+import SmashModal from "@/components/SmashModal";
 
 export default {
   name: "Background",
-  components: {Modal},
+  components: {SmashModal, Modal},
   data () {
     return {
+      showSmash: false,
       showModal: true,
+      showSpotify: false,
       wHeight: 0,
       wWidth: 0,
       areas: [
@@ -101,7 +123,7 @@ export default {
           name: "Ohjain",
           shape: "rect",
           coords: [5728,2956,6083,3119],
-          func: "test"
+          func: "smash"
         },
         {
           name: "Haalarit",
@@ -119,7 +141,7 @@ export default {
           name: "Boombox",
           shape: "rect",
           coords: [935,2939,1876,3502],
-          func: "test"
+          func: "spotify"
         }
       ]
     }
@@ -149,37 +171,31 @@ export default {
     },
   },
   methods: {
-    callMethod(method, event, name) {
-      this[method](name);
-      console.log("Called method: " + method + ", elements: " + name);
+    callMethod(method) {
+      this[method]();
     },
     setDimensions() {
-      console.log("Window resize: height: " + this.$refs.image.clientHeight + ", width: " + this.$refs.image.clientWidth);
       this.wHeight = this.$refs.image.clientHeight;
       this.wWidth = this.$refs.image.clientWidth;
     },
-    test(name) {
-      console.log(name);
-      this.$router.push('test');
+    smash() {
+      this.showModal = false;
+      this.showSpotify = false;
+      this.showSmash = true;
     },
-    paakirjoitus(name) {
-      console.log(name);
+    paakirjoitus() {
       this.$router.push('paakirjoitus');
     },
-    horoskooppi(name) {
-      console.log(name);
+    horoskooppi() {
       this.$router.push('horoskooppi');
     },
-    urheiluhaastis(name) {
-      console.log(name);
+    urheiluhaastis() {
       this.$router.push('murheiluruutu');
     },
-    etaelaminen(name) {
-      console.log(name);
+    etaelaminen() {
       this.$router.push('etaelaminen');
     },
-    playSound(name) {
-      console.log(name);
+    playSound() {
       const cup = [kuppikilina, kaato];
       const overall = [haalarit, kellonkilina];
       if (name === 'Haalarit') {
@@ -198,6 +214,17 @@ export default {
         let audio = new Audio(naputus);
         audio.play();
       }
+    },
+    closeSmash() {
+      this.showSmash = false;
+    },
+    closeSpotify() {
+      this.showSpotify = false;
+    },
+    spotify() {
+      this.showSmash = false;
+      this.showModal = false;
+      this.showSpotify = true;
     }
   }
 }
@@ -233,5 +260,15 @@ p {
   font-size: 1.2em;
   margin: 20px auto 10px;
   max-width: 70%;
+}
+#spotify {
+  width: 300px;
+  height: 50vh;
+}
+@media screen and (orientation:landscape) {
+  p {
+    font-size: 1em;
+    margin: 5px auto 10px;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="$emit('close')">
+  <Modal @close="$emit('close')" id="modal">
     <template v-slot:header>
       <h2>{{title}}</h2>
     </template>

@@ -28,7 +28,8 @@ export default {
 
 <style scoped>
 #modal {
-  top: 30%;
+  top: 50%;
+  transform: translateY(-50%);
   left: 5%;
   right: 5%;
   margin: 0 auto;
@@ -37,7 +38,7 @@ export default {
   width: 600px;
   max-height: 90%;
   background-color: white;
-  border-radius: 60px;
+  border-radius: 45px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 #header {

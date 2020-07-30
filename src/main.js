@@ -1,10 +1,12 @@
 import VueRouter from "vue-router";
+import vClickOutside from 'v-click-outside'
 import Vue from 'vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
+Vue.use(vClickOutside);
 
 import Background from "@/components/Background";
 import Paakirjoitus from "@/components/Paakirjoitus";
