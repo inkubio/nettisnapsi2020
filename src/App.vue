@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-        <router-view></router-view>
+        <router-view @closeIntro="showIntro = false" :showIntro="showIntro"></router-view>
     </transition>
   </div>
 </template>
@@ -10,6 +10,11 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      showIntro: true,
+    }
+  }
 }
 </script>
 

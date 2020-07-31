@@ -30,11 +30,11 @@ const routes = [
   {
     path: '/', component: Background
   }
-]
+];
 
 const router = new VueRouter({routes, mode: 'history'})
 
 new Vue({
   render: h => h(App),
-  router
+  router,
 }).$mount('#app')

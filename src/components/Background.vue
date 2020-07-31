@@ -11,7 +11,7 @@
       />
     </map>
     <transition name="fade">
-      <Modal v-if="showModal" @close="showModal = false">
+      <Modal v-if="showIntro" @close="$emit('closeIntro')">
         <template v-slot:header>
           <h1>NettiSʸnapsi</h1>
         </template>
@@ -63,10 +63,12 @@ import SmashModal from "@/components/SmashModal";
 export default {
   name: "Background",
   components: {SmashModal, Modal},
+  props: {
+    showIntro: {type: Boolean, default: true}
+  },
   data () {
     return {
       showSmash: false,
-      showModal: true,
       showSpotify: false,
       wHeight: 0,
       wWidth: 0,
@@ -183,7 +185,7 @@ export default {
       this.wWidth = this.$refs.image.clientWidth;
     },
     smash() {
-      this.showModal = false;
+      this.showIntro = false;
       this.showSpotify = false;
       this.showSmash = true;
     },
@@ -232,7 +234,7 @@ export default {
     },
     spotify() {
       this.showSmash = false;
-      this.showModal = false;
+      this.showIntro = false;
       this.showSpotify = true;
     }
   }
