@@ -29,10 +29,13 @@ const routes = [
   },
   {
     path: '/', component: Background
+  },
+  {
+    path: '*', redirect: '/'
   }
 ];
 
-const router = new VueRouter({routes, mode: 'history'})
+const router = new VueRouter({routes, mode: 'history', base: 'snapsi2020'})
 
 new Vue({
   render: h => h(App),
