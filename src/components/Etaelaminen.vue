@@ -48,7 +48,7 @@
             Kaveri ei lähettänyt viestiä… Poistin hänet… Olin megalomaaninen.
           </p>
           <p id="end">
-            Etälelämä on… 3/5 very nice!
+            Etäelämä on… 3/5 very nice!
           </p>
         </div>
       </div>
@@ -72,7 +72,7 @@ name: "Etaelaminen",
   margin: 0 auto;
   padding: 4px;
   color: black;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.7);
   border-radius: 10px;
 
 }
