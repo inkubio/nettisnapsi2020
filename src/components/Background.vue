@@ -33,10 +33,10 @@
         </template>
         <div>
           <p>
-            Päätoimittajat: Vilma, Sofia
+            Päätoimittajat: Vilma ja Sofia
           </p>
           <p>
-            Jutut: Akseli, Antti, Henna, Juhana, Onerva, Noora, Valtteri,
+            Jutut: Akseli, Antti, Henna, Juhana, Onerva, Noora, Valtteri
           </p>
           <p>
             Graafinen toteutus: Silva ja Rosanna
