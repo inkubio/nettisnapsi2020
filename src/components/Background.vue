@@ -27,8 +27,25 @@
           </p>
         </div>
       </Modal>
-    </transition>
-    <transition name="fade">
+      <Modal v-if="showCredits" @close="showCredits = false">
+        <template v-slot:header>
+          <h1>Tekijät</h1>
+        </template>
+        <div>
+          <p>
+            Päätoimittajat: Vilma, Sofia
+          </p>
+          <p>
+            Jutut: Akseli, Antti, Henna, Juhana, Onerva, Noora, Valtteri,
+          </p>
+          <p>
+            Graafinen toteutus: Silva ja Rosanna
+          </p>
+          <p>
+            Tekninen toteutus: Oula
+          </p>
+        </div>
+      </Modal>
       <SmashModal v-show="showSmash" @close="showSmash = false" v-click-outside="closeSmash"/>
     </transition>
     <transition name="fade">
@@ -70,6 +87,7 @@ export default {
     return {
       showSmash: false,
       showSpotify: false,
+      showCredits: false,
       wHeight: 0,
       wWidth: 0,
       areas: [
@@ -144,6 +162,12 @@ export default {
           shape: "rect",
           coords: [935,2939,1876,3502],
           func: "spotify"
+        },
+        {
+          name: "Credits",
+          shape: "poly",
+          coords: [5633,90,5306,253,5311,569,5649,417],
+          func: "credits"
         }
       ]
     }
@@ -183,11 +207,6 @@ export default {
     setDimensions() {
       this.wHeight = this.$refs.image.clientHeight;
       this.wWidth = this.$refs.image.clientWidth;
-    },
-    smash() {
-      this.showIntro = false;
-      this.showSpotify = false;
-      this.showSmash = true;
     },
     paakirjoitus() {
       this.$router.push('paakirjoitus');
@@ -235,7 +254,20 @@ export default {
     spotify() {
       this.showSmash = false;
       this.showIntro = false;
+      this.showCredits = false;
       this.showSpotify = true;
+    },
+    smash() {
+      this.showIntro = false;
+      this.showSpotify = false;
+      this.showCredits = false;
+      this.showSmash = true;
+    },
+    credits() {
+      this.showCredits = true;
+      this.showSmash = false;
+      this.showIntro = false;
+      this.showSpotify = false;
     }
   }
 }
