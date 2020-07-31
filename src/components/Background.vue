@@ -274,10 +274,4 @@ p {
   width: 300px;
   height: 50vh;
 }
-@media screen and (orientation:landscape) {
-  p {
-    font-size: 1em;
-    margin: 5px auto 10px;
-  }
-}
 </style>
