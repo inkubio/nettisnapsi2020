@@ -69,12 +69,17 @@ name: "Article",
   background-color: rgba(0,0,0,0.1);
 }
 #title {
-  margin: 0.5em auto 1em;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
   border-radius: 2em;
-  width: 20%;
   background-color: rgba(255,255,255,0.5);
 }
+
 #main {
-  height: 90%;
+  margin-top: 10px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
 }
 </style>

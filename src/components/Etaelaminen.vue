@@ -66,7 +66,7 @@ name: "Etaelaminen",
 
 <style scoped>
 #text {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   width: 90%;
   max-width: 700px;
   margin: 0 auto;
