@@ -36,7 +36,6 @@ export default {
   position: absolute;
   max-width: 90%;
   width: 600px;
-  max-height: 90%;
   background-color: white;
   border-radius: 45px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
