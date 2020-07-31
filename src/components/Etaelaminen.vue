@@ -72,7 +72,7 @@ name: "Etaelaminen",
   margin: 0 auto;
   padding: 4px;
   color: black;
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.9);
   border-radius: 10px;
 
 }
