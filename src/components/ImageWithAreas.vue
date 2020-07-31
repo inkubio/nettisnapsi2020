@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img id="image" @load="setDimensions" ref="image" :src="require(`../assets/${imagePath}`)" :alt="altText" :style="classObject" usemap="#objectmap"/>
+    <img id="image" @load="setDimensions" ref="image" :src="require(`@/assets/${imagePath}`)" :alt="altText" :style="classObject" usemap="#objectmap"/>
     <map name="objectmap">
       <area v-for="a in scaledAreas" :key="a.name"
             :alt="a.name"

@@ -1,6 +1,6 @@
 <template>
   <div id="container" ref="container">
-    <img @load="setDimensions" id="background" ref="image" alt="Kiltis" src="../assets/Nettisnapsi.png" usemap="#objectmap">
+    <img @load="setDimensions" id="background" ref="image" alt="Kiltis" src="@/assets/Nettisnapsi.png" usemap="#objectmap">
     <map name="objectmap">
       <area v-for="a in scaledAreas" :key="a.name"
             :alt="a.name"
@@ -50,13 +50,13 @@
 
 <script>
 
-import haalarit from '../assets/audio/haalarit.mp3';
-import kahvikone from '../assets/audio/kahvikone.mp3';
-import kuppikilina from '../assets/audio/kahvikuppienkilina.mp3'
-import kaato from '../assets/audio/kahvinkaatokuppiin.mp3'
-import kellonkilina from '../assets/audio/kellonkilina.mp3'
-import naputus from '../assets/audio/nappiksennaputus.mp3'
-import suklaapatukanrapina from '../assets/audio/suklaapatukanrapina.mp3'
+import haalarit from '@/assets/audio/haalarit.mp3';
+import kahvikone from '@/assets/audio/kahvikone.mp3';
+import kuppikilina from '@/assets/audio/kahvikuppienkilina.mp3'
+import kaato from '@/assets/audio/kahvinkaatokuppiin.mp3'
+import kellonkilina from '@/assets/audio/kellonkilina.mp3'
+import naputus from '@/assets/audio/nappiksennaputus.mp3'
+import suklaapatukanrapina from '@/assets/audio/suklaapatukanrapina.mp3'
 import Modal from "@/components/Modal";
 import SmashModal from "@/components/SmashModal";
 
